@@ -23,7 +23,7 @@
 #include <PubSubClient.h>
 #include "HAMqttDevice.h"
 
-#define DEVICE_TYPE 11
+#define DEVICE_TYPE 37
 #define FIRMWARE_VERSION "1.0.0"
 #define VALUE_COUNT 5
 
