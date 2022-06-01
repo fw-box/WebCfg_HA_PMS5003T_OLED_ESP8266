@@ -24,7 +24,8 @@
 #include "HAMqttDevice.h"
 
 #define DEVICE_TYPE 37
-#define FIRMWARE_VERSION "1.0.0"
+#define FIRMWARE_VERSION "1.0.1"
+#define DEV_TYPE_NAME "DUST"
 #define VALUE_COUNT 5
 
 #define PIN_A 34
@@ -105,6 +106,8 @@ void setup()
   //Wire.begin(400000);
   Wire.begin();
   Serial.begin(115200);
+  
+  WebCfg.setWiFiApMiddleName(DEV_TYPE_NAME);
   WebCfg.earlyBegin();
 
   pinMode(LED_BUILTIN, OUTPUT);
@@ -183,12 +186,15 @@ void setup()
   DevName = WebCfg.getItemValueString("DEV_NAME");
   Serial.printf("Device Name = %s\n", DevName.c_str());
   if (DevName.length() <= 0) {
-    DevName = "fwbox_dust_sensor_";
+    //DevName = "fwbox_????_";
+    DevName = "fwbox_";
+    DevName += DEV_TYPE_NAME;
+    DevName += "_";
     String str_mac = WiFi.macAddress();
     str_mac.replace(":", "");
-    str_mac.toLowerCase();
     if (str_mac.length() >= 12) {
       DevName = DevName + str_mac.substring(8);
+      DevName.toLowerCase(); // Default device name
       Serial.printf("Auto generated Device Name = %s\n", DevName.c_str());
     }
   }
