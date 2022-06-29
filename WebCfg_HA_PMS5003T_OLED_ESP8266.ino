@@ -24,7 +24,7 @@
 #include "HAMqttDevice.h"
 
 #define DEVICE_TYPE 37
-#define FIRMWARE_VERSION "1.0.1"
+#define FIRMWARE_VERSION "1.0.2"
 #define DEV_TYPE_NAME "DUST"
 #define VALUE_COUNT 5
 
